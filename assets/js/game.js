@@ -1,10 +1,18 @@
+// function to generate a random numeric valuep
+var randomNumber = function(min, max) {
+  var value = Math.floor(Math.random() * (max - min + 1)+ min) + 40;
+
+  return value;
+};
+
+
 var playerName = window.prompt("What is your robot's name?");
 var playerHealth = 100;
 var playerAttack = 10;
 var playerMoney = 10;
 
 var enemyNames = ['Roborto', 'Amy Android', 'Robo Trumble'];
-var enemyHealth = 50;
+var enemyHealth = randomNumber(40, 60);
 var enemyAttack = 12;
 
 // fight function (now with parameter for enemy's name)
@@ -29,7 +37,10 @@ var fight = function(enemyName) {
     }
 
     // remove enemy's health by subtracting the amount set in the playerAttack variable
-    enemyHealth = Math.max(0, enemyHealth - playerAttack);
+    var damage = randomNumber(playerAttack - 3, playerAttack);
+
+
+    enemyHealth = Math.max(0, enemyHealth - damage);
     console.log(
       playerName + ' attacked ' + enemyName + '. ' + enemyName + ' now has ' + enemyHealth + ' health remaining.'
     );
@@ -48,7 +59,10 @@ var fight = function(enemyName) {
     }
 
     // remove players's health by subtracting the amount set in the enemyAttack variable
-    playerHealth = Math.max(0, playerHealth - enemyAttack);
+    var damage = randomNumber(enemyAttack - 3, enemyAttack);
+
+
+    playerHealth = Math.max(0, playerHealth - damage);
     console.log(
       enemyName + ' attacked ' + playerName + '. ' + playerName + ' now has ' + playerHealth + ' health remaining.'
     );
@@ -182,5 +196,3 @@ var shop = function() {
 
 // start first game when page loads
 startGame();
-//3.4.4
-// function to generate a random numeric value
